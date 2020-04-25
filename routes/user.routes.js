@@ -29,10 +29,10 @@ router.get('/', [
         .then((data) => data)
         .catch((error) => ({ error }));
       if (result.error) {
-        return res.status(500).json({ message: 'No such user' });
+        return res.status(500).json({ error: result.error });
       }
       return res.status(200).json(result);
-    } catch (e) {
+    } catch (e) { 
       return res.status(500).json({ message: e });
     }
   });
@@ -62,7 +62,7 @@ router.post('/login', [
         .catch((error) => ({ error })); 
 
       if (result.error) {
-        return res.status(500).json(result);
+        return res.status(500).json({ error: result.error });
       } 
       const isMatch = await bcrypt.compare(password, result.password)
       if (!isMatch) {
@@ -83,8 +83,8 @@ router.post('/login', [
 
 // POST `api/user/register`
 router.post('/register', [
-    check('email', 'Wrong email').normalizeEmail().isEmail(),
-    check('password', 'Wrong password').isLength({ min: 5 })
+    body('email', 'Wrong email').normalizeEmail().isEmail(),
+    body('password', 'Wrong password').isLength({ min: 5 })
   ],
   async(req, res) => {
     try {
@@ -100,7 +100,7 @@ router.post('/register', [
         .catch(error => ({ error }));
       
       if (result.error) {
-        return res.status(500).json({ message: 'User exists' });
+        return res.status(500).json({ error: result.error });
       }
       const token = jwt.sign(
         { id: result },

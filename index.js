@@ -6,6 +6,7 @@ const port = 3000;
 app.use(express.json({ extended: true }));
 
 app.use('/api/user', require('./routes/user.routes'));
+app.use('/api/product', require('./routes/product.routes'));
 
 app.get('/2', (req, res) => {
   db.any(`SELECT p.*, 

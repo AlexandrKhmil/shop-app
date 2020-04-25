@@ -39,9 +39,9 @@
 | DELETE | `/api/products/{productId}/rate` | Delete rate of product |
 | GET | `/api/products/{productId}/review` | Get secified number of reviews to product |
 | GET | `/api/products/{productId}/reviews&from={start}&limit={size}` | Get secified number of reviews to product |
-| POST | `/api/products/{productId}/reviews` | Add review to product |
-| PUT | `/api/products/{productId}/reviews` | Change user's review |
-| DELETE | `/api/products/{productId}/reviews` | Delete user's review |
+| POST | `/api/products/{productId}/review` | Add review to product |
+| PUT | `/api/products/{productId}/review` | Change user's review |
+| DELETE | `/api/products/{productId}/review` | Delete user's review |
 | POST | `/api/products/{productId}/review/like` | Add Like to review |
 
 ---
