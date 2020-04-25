@@ -3,8 +3,9 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-var pgp = require('pg-promise')();
-const db = pgp('postgres://postgres:root@localhost:5432/flower-shop');
+app.use(express.json({ extended: true }));
+
+app.use('/api/user', require('./routes/user.routes'));
 
 app.get('/2', (req, res) => {
   db.any(`SELECT p.*, 
@@ -58,6 +59,7 @@ GROUP BY p.p_id;`)
     });
 });
 
+// START
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
 );

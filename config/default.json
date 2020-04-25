@@ -1,0 +1,4 @@
+{
+  "jwtSecret": "jwtSecret",
+  "db": "postgres://postgres:root@localhost:5432/flower-shop"
+}
